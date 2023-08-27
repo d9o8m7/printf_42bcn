@@ -1,10 +1,10 @@
 #ifndef FT_PRINTF_H // Directiva de preprocesador para evitar inclusiones múltiples
 # define FT_PRINTF_H // Define el símbolo FT_PRINTF_H para asegurar la inclusión única
 
-#include <stdio.h> // Inclusión de la biblioteca estándar de entrada/salida
-#include <unistd.h> // Inclusión de la biblioteca para el uso de la función write
-#include <stdlib.h> // Inclusión de la biblioteca estándar para funciones generales
-#include <stdarg.h> // Inclusión de la biblioteca para el manejo de argumentos variables
+#include <stdio.h> // lib estándar de entrada/salida
+#include <unistd.h> // lib para el uso de la función write
+#include <stdlib.h> // lib estándar para funciones generales
+#include <stdarg.h> // lib para el manejo de argumentos variables
 
 // Declaración de funciones utilizadas en el código
 int ft_putchar(int c);

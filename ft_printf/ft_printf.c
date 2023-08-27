@@ -1,4 +1,4 @@
-#include "ft_printf.h" // Se incluye el archivo de cabecera "ft_printf.h"
+#include "ft_printf.h"
 
 // Función para manejar los argumentos de formato
 int ft_args(const char *s, va_list ac)

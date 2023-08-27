@@ -1,4 +1,4 @@
-#include "ft_printf.h" // Incluir el archivo de cabecera "ft_printf.h"
+#include "ft_printf.h"
 
 // Función para imprimir un carácter
 int ft_putchar(int c)
