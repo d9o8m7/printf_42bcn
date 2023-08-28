@@ -1,43 +1,49 @@
-# Nombre del archivo de salida
-NAME = libftprint.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/28 15:08:28 by daoliver          #+#    #+#              #
+#    Updated: 2023/08/28 15:08:38 by daoliver         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Lista de archivos fuente
-SRCS = ft_hexa.c ft_point.c ft_printf.c ft_utils.c
+## Name OUT FILE, Compiler & Flags
+NAME:= libftprint.a
+HEADER:= ft_printf.h
+CC:= gcc
+CFLAGS:= -Wall =Werror -Wextra -I .
+RM:= rm -f
+AR:= ar rcs
 
-# Archivos de inclusión
-INCLUDE = ft_printf.h 
-
-# Compilador y opciones de compilación
-CC = gcc 
-CFLAGS = -Wall -Werror -Wextra
-AR = ar rcs
-RM = rm -f
-
-# Regla para compilar un archivo fuente en un archivo objeto
-%.o: %.c $(INCLUDE)
+## CC RULES
+%.o: %.c $(HEADER)
 	@echo COMPILANDO...
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
-# Lista de archivos objeto
-OBJS = $(SRCS:.c=.o)
+## SOURCE FUNCTIONS
+SRC:= ft_hexa.c ft_utils.c ft_point.c ft_printf.c
 
-# Regla para construir el archivo de salida (librería estática)
+OBJS:= $(SRC:.c=.o)
+$(info $(SRC))
+
+## ALL COMPILE
+all: $(OBJ) $(NAME)
+
+## STAT_LIB_ARCH from .o
 $(NAME): $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
-	@echo $(NAME) creado
+				$(AR) $(NAME) $(OBJS)
 
-# Regla para limpiar los archivos objeto
+## CLEANING
 clean:
-	@$(RM) $(OBJS)
-	@echo Todos los objetos limpiados exitosamente 
+				$(RM) $(OBJ)
+fclean : clean
+				$(RM) $(NAME)
 
-# Regla para limpiar los archivos objeto y el archivo de salida
-fclean: clean
-	@$(RM) $(NAME)
-	@echo Objetos y ejecutable eliminados
-
-# Regla para reconstruir todo
+## RECOMPILE
 re: fclean all
 
-# Objetivos especiales que no representan archivos
-.PHONY: all clean re fclean
+## WILDCARDS
+.PHONY: all clean fclean re
