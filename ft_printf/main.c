@@ -14,9 +14,20 @@
 #include <wchar.h>
 #include <fcntl.h>
 
+/*SOME PRINTF TEST*/
+
 int	main()
 {
-	printf("%x %d\n", -1, -42);
+	int	result;
 
-	return 0;
+	result = 0;
+	printf("///printf///\n");
+	result = printf("%s", "");
+	printf("\n");
+	printf("%d\n", result);
+	printf("///ft_printf///\n");
+	result = ft_printf("%s", "");
+	printf("\n");
+	printf("%d\n", result);
+	return (0);
 }
