@@ -1,20 +1,32 @@
-#ifndef FT_PRINTF_H // Directiva de preprocesador para evitar inclusiones múltiples
-# define FT_PRINTF_H // Define el símbolo FT_PRINTF_H para asegurar la inclusión única
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/04 21:26:50 by daoliver          #+#    #+#             */
+/*   Updated: 2023/09/04 21:31:53 by daoliver         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h> // lib estándar de entrada/salida
-#include <unistd.h> // lib para el uso de la función write
-#include <stdlib.h> // lib estándar para funciones generales
-#include <stdarg.h> // lib para el manejo de argumentos variables
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-// Declaración de funciones utilizadas en el código
-int ft_putchar(int c);
-int ft_putnbr(int n);
-unsigned int ft_putnbrbase(unsigned int n, char *base);
-int ft_putstr(char *s);
-int ft_strlen(char *s);
-unsigned int ft_nosign(unsigned int i);
-int ft_putp(unsigned long long i);
-int ft_baselong(unsigned long long n, char *base);
-int ft_printf(const char *s, ...);
+/*PROTOTIPO*/
 
-#endif // Fin de la directiva de preprocesador
+int	ft_printf(const char *str, ...);
+
+/*FUNCIONES*/
+
+int		print_char(char c, int *count);
+void	print_string(char *str, int *count);
+void	print_number(int number, int *count);
+void	print_pointer(unsigned long pointer, int *count);
+void	print_hexa(int n, int *count, char c);
+void	print_unsigned(unsigned int u, int *count);
+
+#endif
