@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.c                                         :+:      :+:    :+:   */
+/*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 13:58:36 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/08 14:35:33 by daoliver         ###   ########.fr       */
+/*   Created: 2023/09/08 14:30:22 by daoliver          #+#    #+#             */
+/*   Updated: 2023/09/08 14:34:45 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	static_ft_point(unsigned long point, int *count)
+int	ft_char(char c, int *count)
 {
-	char	*hex;
+	int	result;
 
-	hex = "0123456789abcdef";
+	result = 0;
 	if (*count != -1)
+		result = write(1, &c, 1);
+	if (result == -1)
 	{
-		if (point >= 16 && *count != -1)
-			static_ft_point(point / 16, count);
-		if (*count != -1 && ft_char(hex[point % 16], count) == -1)
-			*count = -1;
+		*count = -1;
+		return (-1);
 	}
+	else
+		*count += 1;
+	return (*count);
 }
 
-void	ft_point(unsigned long point, int *count)
+void	ft_string(char *str, int *count)
 {
-	ft_string("0x", count);
-	static_ft_point(point, count);
+	size_t	i;
+
+	i = 0;
+	if (!str || str == NULL)
+	{
+		ft_string("(null)", count);
+		return ;
+	}
+	while (str[i] != '\0' && *count != -1)
+	{
+		ft_char(str[i], count);
+		i++;
+	}
 }

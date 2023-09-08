@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.c                                         :+:      :+:    :+:   */
+/*   ft_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 13:58:36 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/08 14:35:33 by daoliver         ###   ########.fr       */
+/*   Created: 2023/09/08 14:09:04 by daoliver          #+#    #+#             */
+/*   Updated: 2023/09/08 15:07:44 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	static_ft_point(unsigned long point, int *count)
+void	ft_number(int number, int *count)
 {
-	char	*hex;
-
-	hex = "0123456789abcdef";
-	if (*count != -1)
+	if (number == -2147483648)
 	{
-		if (point >= 16 && *count != -1)
-			static_ft_point(point / 16, count);
-		if (*count != -1 && ft_char(hex[point % 16], count) == -1)
-			*count = -1;
+		ft_string("-2147483648", count);
+		return ;
 	}
-}
-
-void	ft_point(unsigned long point, int *count)
-{
-	ft_string("0x", count);
-	static_ft_point(point, count);
+	if (number < 0)
+	{
+		ft_char('-', count);
+		return ;
+	}
+	else
+	{
+		if (number > 9)
+			ft_number(number / 10, count);
+		if (*count == -1)
+			return ;
+		ft_char(number % 10 + '0', count);
+		if (*count == -1)
+			return ;
+	}
 }

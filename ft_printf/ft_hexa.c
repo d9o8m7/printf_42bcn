@@ -1,44 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/08 14:18:01 by daoliver          #+#    #+#             */
+/*   Updated: 2023/09/08 15:09:12 by daoliver         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-// Función para imprimir un número en una base dada
-unsigned int ft_putnbrbase(unsigned int n, char *base)
+void	ft_hexa(int n, int *count, char c)
 {
-    int nbr;
+	char			*hex_min;
+	char			*hex_may;
+	unsigned int	number;
 
-    nbr = 0;
-    if (n >= 16)
-    {
-        nbr += ft_putnbrbase(n / 16, base); // Llamada recursiva para convertir la parte restante
-        if (nbr == -1)
-            return (-1);
-        n = n % 16;
-    }
-    if (n > 16)
-    {
-        write(1, &base[n], 1); // Imprimir el carácter correspondiente al valor en la base
-        nbr++;
-    }
-    return (nbr); // Devolver la cantidad de caracteres impresos
+	hex_min = "0123456789abcdef";
+	hex_may = "0123456789ABCDEF";
+	number = (unsigned int)n;
+	if (number >= 16 && *count != -1)
+		ft_hexa(number / 16, count, c);
+	if (c == 'x')
+	{
+		if (*count != -1 && ft_char (hex_min[number % 16], count) == -1)
+			*count = -1;
+	}
+	if (c == 'X')
+	{
+		if (*count != -1 && ft_char(hex_may[number % 16], count) == -1)
+			*count = -1;
+	}
 }
 
-// Función para imprimir un número entero sin signo
-unsigned int ft_nosign(unsigned int i)
+void	ft_unsigned(unsigned int u, int *count)
 {
-    int n;
-
-    n = 0;
-    if (i > 9)
-    {
-        n = ft_nosign(i / 10); // Llamada recursiva para convertir la parte restante
-        if (n == -1)
-            return (-1);
-        i = i % 10;
-    }
-    if (i <= 9)
-    {
-        if (ft_putchar(('0' + i)) == -1) // Imprimir el carácter correspondiente al dígito
-            return (-1);
-        n++;
-    }
-    return (n); // Devolver la cantidad de caracteres impresos
+	if (u >= 10)
+	{
+		ft_unsigned(u / 10, count);
+		if (*count == -1)
+			return ;
+	}
+	ft_char(u % 10 + '0', count);
+	if (*count == -1)
+		return ;
 }

@@ -6,7 +6,7 @@
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 21:26:50 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/04 21:31:53 by daoliver         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:11:38 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	ft_printf(const char *str, ...);
 
 /*FUNCIONES*/
 
-int		print_char(char c, int *count);
-void	print_string(char *str, int *count);
-void	print_number(int number, int *count);
-void	print_pointer(unsigned long pointer, int *count);
-void	print_hexa(int n, int *count, char c);
-void	print_unsigned(unsigned int u, int *count);
+int	ft_char(char c, int *count);
+void	ft_string(char *str, int *count);
+void	ft_number(int number, int *count);
+void	ft_pointer(unsigned long pointer, int *count);
+void	ft_hexa(int n, int *count, char c);
+void	ft_unsigned(unsigned int u, int *count);
 
 #endif
