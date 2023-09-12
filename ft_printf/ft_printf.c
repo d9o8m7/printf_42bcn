@@ -6,22 +6,18 @@
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:12:18 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/08 15:06:28 by daoliver         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:06:43 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h>
 
 static void	s_str(char c, va_list args, int *count)
 {
 	if (c == 'c')
 		ft_char(va_arg(args, int), count);
 	if (c == 's')
-		ft_string(va_arg(args, char *), count);
+		ft_char(va_arg(args, int), count);
 	if (c == 'p')
 		ft_point(va_arg(args, unsigned long), count);
 	if (c == 'u')
@@ -43,17 +39,17 @@ int	ft_printf(char const *form, ...)
 	i = 0;
 	count = 0;
 	va_start(args, form);
-	while (str[i] && count != -1)
+	while (form[i] && count != -1)
 	{
-		if (str[i] == '%')
+		if (form[i] == '%')
 		{
 			i++;
-			ft_string(str[i], args, &count);
+			s_str(form[i], args, &count);
 			i++;
 		}
 		else
 		{
-			ft_char(str[i], &count);
+			ft_char(form[i], &count);
 			i++;
 		}
 	}

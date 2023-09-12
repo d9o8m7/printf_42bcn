@@ -6,7 +6,7 @@
 #    By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:08:28 by daoliver          #+#    #+#              #
-#    Updated: 2023/09/08 15:04:31 by daoliver         ###   ########.fr        #
+#    Updated: 2023/09/12 12:40:30 by daoliver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME:= libftprint.a
 HEADER:= ft_printf.h
 CC:= cc
-CFLAGS:= -Wall -Werror -Wextra -I .
+CFLAGS:= -Wall -Werror -Wextra -I.
 RM:= rm -f
 AR:= ar rcs
 
@@ -23,12 +23,7 @@ AR:= ar rcs
 	@$(CC) $(FLAGS) -c $< -o $@
 
 ## SOURCE FUNCTIONS
-SRC:= ft_char.c \
-	  ft_hexa.c \
-	  ft_utils.c \
-	  ft_number.c \
-	  ft_point.c \
-	  ft_printf.c \
+SRC:= ft_char.c ft_hexa.c ft_number.c ft_point.c ft_printf.c \
 
 OBJS:= $(SRC:.c=.o)
 $(info $(SRC))
