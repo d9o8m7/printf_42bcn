@@ -6,7 +6,7 @@
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 21:26:50 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/12 12:41:17 by daoliver         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:50:32 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 /*PROTOTIPO*/
 
-int	ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 
 /*FUNCIONES*/
 
-int	ft_char(char c, int *count);
+int		ft_char(char c, int *count);
 void	ft_string(char *str, int *count);
 void	ft_number(int number, int *count);
 void	ft_point(unsigned long pointer, int *count);
