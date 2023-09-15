@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:08:28 by daoliver          #+#    #+#              #
-#    Updated: 2023/09/15 16:47:00 by daoliver         ###   ########.fr        #
+#    Updated: 2023/09/15 17:08:14 by daoliver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ AR:= ar rcs
 SRC:= ft_char.c ft_hexa.c ft_number.c ft_point.c ft_printf.c \
 
 OBJS:= $(SRC:.c=.o)
-$(info $(SRC))
 
 ## ALL COMPILE
 all: $(NAME)
@@ -39,7 +38,7 @@ $(NAME): $(OBJS)
 clean:
 		$(RM) $(OBJS)
 
-fclean : clean
+fclean: clean
 		$(RM) $(NAME)
 
 ## RECOMPILE
