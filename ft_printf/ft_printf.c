@@ -6,7 +6,7 @@
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:12:18 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/15 17:00:25 by daoliver         ###   ########.fr       */
+/*   Updated: 2023/09/15 17:46:16 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	s_str(char c, va_list args, int *count)
 	if (c == 'c')
 		ft_char(va_arg(args, int), count);
 	if (c == 's')
-		ft_char(va_arg(args, int), count);
+		ft_string(va_arg(args, char *), count);
 	if (c == 'p')
 		ft_point(va_arg(args, unsigned long), count);
 	if (c == 'u')
@@ -30,7 +30,7 @@ static void	s_str(char c, va_list args, int *count)
 		ft_char('%', count);
 }
 
-int	ft_printf(char const *form, ...)
+int	ft_printf(char const *str, ...)
 {
 	va_list	args;
 	size_t	i;
@@ -38,18 +38,18 @@ int	ft_printf(char const *form, ...)
 
 	i = 0;
 	count = 0;
-	va_start(args, form);
-	while (form[i] && count != -1)
+	va_start(args, str);
+	while (str[i] && count != -1)
 	{
-		if (form[i] == '%')
+		if (str[i] == '%')
 		{
 			i++;
-			s_str(form[i], args, &count);
+			s_str(str[i], args, &count);
 			i++;
 		}
 		else
 		{
-			ft_char(form[i], &count);
+			ft_char(str[i], &count);
 			i++;
 		}
 	}
