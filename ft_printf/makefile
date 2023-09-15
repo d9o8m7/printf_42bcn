@@ -6,7 +6,7 @@
 #    By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:08:28 by daoliver          #+#    #+#              #
-#    Updated: 2023/09/12 12:40:30 by daoliver         ###   ########.fr        #
+#    Updated: 2023/09/15 16:47:00 by daoliver         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM:= rm -f
 AR:= ar rcs
 
 ## CC RULES
-%.o: %.c $(HEADER) makefile
+%.o: %.c $(HEADER) Makefile
 	@$(CC) $(FLAGS) -c $< -o $@
 
 ## SOURCE FUNCTIONS
@@ -29,7 +29,7 @@ OBJS:= $(SRC:.c=.o)
 $(info $(SRC))
 
 ## ALL COMPILE
-all: $(OBJS) $(NAME)
+all: $(NAME)
 
 ## STAT_LIB_ARCH from .o
 $(NAME): $(OBJS)
