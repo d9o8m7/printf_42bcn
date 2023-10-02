@@ -6,7 +6,7 @@
 /*   By: daoliver <daoliver@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:09:04 by daoliver          #+#    #+#             */
-/*   Updated: 2023/09/08 15:07:44 by daoliver         ###   ########.fr       */
+/*   Updated: 2023/09/15 17:59:15 by daoliver         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	ft_number(int number, int *count)
 	if (number < 0)
 	{
 		ft_char('-', count);
-		return ;
+		if (*count == -1)
+			return ;
+		ft_number(number * -1, count);
+		if (*count == -1)
+			return ;
 	}
 	else
 	{
